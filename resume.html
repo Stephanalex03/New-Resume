@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Editable Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 80%;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    h1 {
+      color: black;
+      text-align: center;
+      margin-bottom: 0;
+      font-size: 24px; /* Smaller title font */
+    }
+
+    h2 {
+      color: black;
+      text-align: center;
+      font-size: 18px; /* Smaller subtitle font */
+      font-weight: 400;
+      margin-top: 5px;
+    }
+
+    .section {
+      margin-bottom: 20px; /* Reduced margin for compactness */
+      padding: 15px; /* Less padding for more compact sections */
+      background-color: #fafafa;
+      border-radius: 5px;
+    }
+
+    .section-header {
+      background-color: #e0e0e0;
+      padding: 8px 15px;
+      border-radius: 5px;
+      margin-bottom: 12px;
+      font-weight: bold;
+      color: black;
+      font-size: 16px; /* Smaller font for section header */
+      text-transform: uppercase;
+    }
+
+    .editable {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      margin-top: 8px;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+      word-wrap: break-word;
+      text-align: left;
+      font-size: 14px; /* Smaller font size for content */
+    }
+
+    .editable:focus {
+      outline: none;
+      border-color: #007fff;
+      background-color: #fff;
+    }
+
+    .btn-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 8px 18px;
+      background-color: #007fff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px; /* Smaller font size for buttons */
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #005fa3;
+    }
+
+    .add-btn {
+      background-color: #28a745;
+    }
+
+    .add-btn:hover {
+      background-color: #218838;
+    }
+
+    /* Media Queries for responsive design */
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 16px;
+      }
+
+      .section-header {
+        font-size: 14px;
+      }
+
+      .editable {
+        font-size: 12px;
+        padding: 6px;
+      }
+
+      .btn {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+
+      .btn-container {
+        margin-top: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 20px;
+      }
+
+      h2 {
+        font-size: 14px;
+      }
+
+      .section-header {
+        font-size: 12px;
+      }
+
+      .editable {
+        font-size: 10px;
+        padding: 5px;
+      }
+
+      .btn {
+        font-size: 10px;
+        padding: 5px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Editable name and title -->
+    <h1 contenteditable="true" id="name">John Doe</h1>
+    <h2 contenteditable="true" id="title">John Doe's Resume</h2>
+
+    <section class="section" id="contact-info">
+      <div class="section-header">Contact Information</div>
+      <p><strong>Location:</strong> <span class="editable" contenteditable="true">Your Location</span></p>
+      <p><strong>Email:</strong> <span class="editable" contenteditable="true">youremail@domain.com</span></p>
+      <p><strong>Phone:</strong> <span class="editable" contenteditable="true">+90-541-999-99-99</span></p>
+      <p><strong>Website:</strong> <span class="editable" contenteditable="true">yourwebsite.com</span></p>
+    </section>
+
+    <section class="section" id="education">
+      <div class="section-header">Education</div>
+      <p><strong>Degree:</strong> <span class="editable" contenteditable="true">BS in Computer Science</span></p>
+      <p><strong>Institution:</strong> <span class="editable" contenteditable="true">University of Pennsylvania</span></p>
+      <p><strong>Years:</strong> <span class="editable" contenteditable="true">Sept 2000 – May 2005</span></p>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-header">Experience</div>
+      <div class="experience-entry" id="experience1">
+        <h3 contenteditable="true">Software Engineer at Apple</h3>
+        <p><strong>Location:</strong> <span class="editable" contenteditable="true">Cupertino, CA</span></p>
+        <p><strong>Duration:</strong> <span class="editable" contenteditable="true">June 2005 – Aug 2007</span></p>
+        <p><strong>Responsibilities:</strong> <span class="editable" contenteditable="true">Developed algorithms to optimize system performance, ensuring scalability and efficiency in software solutions...</span></p>
+      </div>
+      <div class="experience-entry" id="experience2">
+        <h3 contenteditable="true">Software Engineer Intern at Microsoft</h3>
+        <p><strong>Location:</strong> <span class="editable" contenteditable="true">Redmond, WA</span></p>
+        <p><strong>Duration:</strong> <span class="editable" contenteditable="true">June 2003 – Aug 2003</span></p>
+        <p><strong>Responsibilities:</strong> <span class="editable" contenteditable="true">Built user interfaces for Visual Studio tools and helped with code optimization and debugging...</span></p>
+      </div>
+      <button class="btn add-btn" onclick="addExperience()">Add More Experience</button>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="section-header">Publications</div>
+      <div>
+        <h3 contenteditable="true">All the best</h3>
+        <p><strong>Authors:</strong> Stephan Alhat</p>
+        <p><strong>Published:</strong> <span class="editable" contenteditable="true">Jan 2004</span></p>
+        <p><strong>DOI:</strong> <a href="#" class="editable" contenteditable="true">https://doi.org/10.1109/TASC.2023.3340648</a></p>
+      </div>
+    </section>
+
+    <section class="section" id="technologies">
+      <div class="section-header">Technologies</div>
+      <p><strong>Languages:</strong> <span class="editable" contenteditable="true">C++, Java, JavaScript, Python</span></p>
+      <p><strong>Technologies:</strong> <span class="editable" contenteditable="true">.NET, SQL, Node.js, Docker</span></p>
+    </section>
+
+    <div class="btn-container">
+      <button class="btn" onclick="generatePDF()">Download as PDF</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    let experienceCount = 2;
+
+    function addExperience() {
+      experienceCount++;
+      const newExperience = document.createElement('div');
+      newExperience.classList.add('experience-entry');
+      newExperience.id = 'experience' + experienceCount;
+      newExperience.innerHTML = `
+        <h3 contenteditable="true">Software Engineer at New Company</h3>
+        <p><strong>Location:</strong> <span class="editable" contenteditable="true">New York, NY</span></p>
+        <p><strong>Duration:</strong> <span class="editable" contenteditable="true">Start Date – End Date</span></p>
+        <p><strong>Responsibilities:</strong> <span class="editable" contenteditable="true">Responsibilities...</span></p>
+      `;
+      document.getElementById('experience').appendChild(newExperience);
+    }
+
+    function generatePDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const pageHeight = doc.internal.pageSize.height;
+      let y = 30;
+
+      // Add "Resume" header centered
+      doc.setFontSize(16);  // Smaller font size for title
+      doc.setTextColor(0, 0, 0);
+      const name = document.getElementById('name').innerText;
+      doc.text(name, doc.internal.pageSize.width / 2, y, { align: "center" });
+      y += 10;
+
+      // Add title
+      const title = document.getElementById('title').innerText;
+      doc.setFontSize(14);  // Smaller font size for subtitle
+      doc.text(title, doc.internal.pageSize.width / 2, y, { align: "center" });
+      y += 15;
+
+      // Function to handle section content
+      function addSectionContent(sectionId, y) {
+        const section = document.getElementById(sectionId);
+        const header = section.querySelector('.section-header').innerText;
+        const content = section.querySelectorAll('.editable');
+
+        // Set background for section header
+        doc.setFillColor(224, 224, 224); 
+        doc.rect(20, y - 5, 180, 10, 'F'); 
+
+        doc.setFontSize(14);  // Smaller font size for section header
+        doc.setTextColor(0, 0, 0); 
+        doc.text(header, 20, y);
+        y += 15;
+
+        content.forEach(el => {
+          const text = el.innerText;
+          const wrappedText = doc.splitTextToSize(text, 180);
+          wrappedText.forEach(line => {
+            if (y > pageHeight - 20) {
+              doc.addPage();
+              y = 30;
+            }
+            doc.text(line, 20, y);
+            y += 8;  // Smaller line spacing for more content
+          });
+        });
+        return y;
+      }
+
+      // Add sections to PDF
+      const sections = ['contact-info', 'education', 'experience', 'publications', 'technologies'];
+      sections.forEach(sectionId => {
+        y = addSectionContent(sectionId, y);
+      });
+
+      // Save PDF
+      doc.save('resume.pdf');
+    }
+  </script>
+</body>
+</html>

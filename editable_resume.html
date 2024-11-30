@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editable Resume</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, textarea, select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resume-preview {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        #preview-content {
+            white-space: pre-wrap;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Edit Your Resume</h1>
+
+    <!-- Resume Form -->
+    <form id="resume-form">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="johndoe@email.com" required>
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" placeholder="+1 234 567 890" required>
+
+        <label for="experience">Work Experience:</label>
+        <textarea id="experience" name="experience" rows="4" placeholder="Details of your work experience..." required></textarea>
+
+        <label for="education">Education:</label>
+        <textarea id="education" name="education" rows="4" placeholder="Your educational background..." required></textarea>
+
+        <label for="skills">Skills:</label>
+        <textarea id="skills" name="skills" rows="4" placeholder="List your skills..." required></textarea>
+
+        <button type="button" id="generateResume">Generate Resume</button>
+    </form>
+
+    <div id="resume-preview">
+        <h3>Resume Preview:</h3>
+        <div id="preview-content"></div>
+    </div>
+
+    <button id="downloadResume" style="display:none;">Download as PDF</button>
+</div>
+
+<script>
+    // Function to generate and preview the resume
+    document.getElementById('generateResume').addEventListener('click', function () {
+        var fullName = document.getElementById('fullName').value;
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+        var experience = document.getElementById('experience').value;
+        var education = document.getElementById('education').value;
+        var skills = document.getElementById('skills').value;
+
+        var resumeContent = `
+            Full Name: ${fullName}
+            Email: ${email}
+            Phone: ${phone}
+
+            Work Experience:
+            ${experience}
+
+            Education:
+            ${education}
+
+            Skills:
+            ${skills}
+        `;
+
+        document.getElementById('preview-content').textContent = resumeContent;
+        document.getElementById('downloadResume').style.display = 'block';
+    });
+
+    // Function to download the resume as a PDF
+    document.getElementById('downloadResume').addEventListener('click', function () {
+        const { jsPDF } = window.jspdf;
+        var doc = new jsPDF();
+        var content = document.getElementById('preview-content').textContent;
+        
+        doc.text(content, 10, 10);
+        doc.save('Resume.pdf');
+    });
+</script>
+
+</body>
+</html>
